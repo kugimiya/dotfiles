@@ -1,0 +1,133 @@
+/* ================================================= */
+/*  Rofi config by lans9831                          */
+/*  Suggested icon pack: Papirus                     */
+/* ================================================= */
+
+configuration {
+  disable-history: false;
+  modi: "drun,run,window";
+  sidebar-mode: true;
+}
+* {
+  font: "Iosevka 12";
+  text-color:        @base00;
+  background-color:  rgba(0,0,0,0);
+  base03:  #002b36;
+  base02:  #073642;
+  base01:  #586e75;
+  base00:  #657b83;
+  white:   #f5f5f5;
+  whitegrayed: #f1f1f1;
+  base0:   #839496;
+  base1:   #93a1a1;
+  base2:   #eee8d5;
+  base3:   #fdf6e3;
+  yellow:  #b58900;
+  orange:  #cb4b16;
+  red:     #dc322f;
+  magenta: #d33682;
+  violet:  #6c71c4;
+  blue:    #268bd2;
+  cyan:    #2aa198;
+  green:   #859900;
+}
+
+#window {
+  fullscreen:    true;
+  location:      west;
+  anchor:        west;
+  border:        0px 0px 54px 0px;
+  transparency:  "real";
+
+  orientation:  horizontal;
+  children:     [mainbox, dummy];
+}
+
+/* First container */
+#mainbox {
+  expand:            false;
+  background-color:  @base3;
+  border:            5px;
+  border-color:      @base00;
+  spacing: 0px;
+}
+
+/* Dummy container */
+#dummy { 
+  expand: true; 
+}
+
+#sidebar {
+  spacing: 0px;
+}
+#button {
+  padding:    15px;
+  spacing:    0px;
+  background-color:  @base0;
+  text-color:	     @base3;
+}
+#button selected {
+  font:              "Iosevka 12";
+  background-color:  @base00;
+  text-color:	     @base3;
+}
+
+#inputbar {
+  background-color:  @base0;
+  padding:           15px 10px 15px 10px;
+  spacing:           10px;
+}
+
+#prompt {
+  font: "Iosevka Bold 12";
+  text-color: @base3;
+}
+
+#entry {
+  font: "Iosevka 12";
+  text-color: @base3;
+  width: 18em;
+}
+
+#listview {
+  spacing: 0px;
+  background-color: @whitegrayed;
+}
+
+#element {
+  font:             "Iosevka 12";
+  padding:          10px;
+  background-color: @white;
+}
+
+#element selected normal {
+  background-color: @base00;
+  text-color:	    @base3;
+}
+#element selected active {
+  background-color: @base00;
+  text-color:	    @magenta;
+}
+#element selected urgent {
+  background-color: @base00;
+  text-color:	    @red;
+}
+#element normal active {
+  text-color:	    @magenta;
+}
+#element normal urgent {
+  text-color:	    @red;
+}
+#element alternate normal {
+  background-color: @whitegrayed;
+}
+#element alternate active {
+  background-color: @base2;
+}
+#element alternate urgent {
+  background-color: @base2;
+  text-color:	    @red;
+}
+
+/* vim:ft=css */
+
