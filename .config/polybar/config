@@ -1,0 +1,218 @@
+[global/wm]
+margin-top = 0
+margin-bottom = 0
+
+[bar/kugis]
+dock = false
+width = 100%
+height = 30
+offset-x = 0
+offset-y = 0
+fixed-center = true
+bottom = true
+
+background = #333333
+foreground = ${xrdb:color15}
+linecolor = ${xrdb:color0}
+fontcolor = ${xrdb:color15}
+
+border-bottom-size = 5
+border-top-size = 5
+border-left-size = 5
+border-right-size = 5
+
+border-color = #5f676a
+
+spacing = 1
+lineheight = 1
+padding-left = 0
+padding-right = 2
+module-margin-left = 1
+module-margin-right = 2
+
+#font-0 = "terminus:pixelsize=12:antialias=false;0"
+font-0 = "Iosevka:size=10"
+
+modules-left = i3
+modules-center = xwindow
+modules-right = filesystem date
+
+[module/xwindow]
+type = internal/xwindow
+label = %title%
+label-maxlen = 80
+
+[module/filesystem]
+type = internal/fs
+interval = 60 
+
+mount-0 = /
+mount-1 = /home
+
+label-mounted = %mountpoint%: %percentage_used%% [used]
+
+label-unmounted = %mountpoint%: not mounted
+label-unmounted-foreground = #55
+
+[module/i3]
+type = internal/i3
+format = <label-state>
+index-sort = true
+
+label-focused = %index%
+label-focused-background = ${xrdb:color10}
+label-focused-foreground = ${xrdb:color15}
+label-focused-padding = 2
+
+label-unfocused = %index%
+label-unfocused-padding = 2
+
+label-urgent = %index%!
+label-urgent-background = ${xrdb:color2}
+label-urgent-padding = 2
+
+label-visible = %index%
+label-visible-foreground = #555
+label-visible-padding = 2
+
+[module/cpu]
+type = internal/cpu
+interval = 5
+label = CPU:%percentage%%
+
+[module/memory]
+type = internal/memory
+interval = 5
+label = MEM:%percentage_used%%
+
+[module/wlan]
+type = internal/network
+interface = wlp3s0
+interval = 5
+
+;format-connected = <ramp-signal> <label-connected>
+
+label-connected = %essid%
+;label-disconnected = wifi disconnected
+
+[module/eth]
+type = internal/network
+interface = enp9s0
+interval = 10
+
+label-connected = %local_ip%
+;label-disconnected = %ifname% disconnected
+
+[module/date]
+type = internal/date
+date = %H:%M
+date-alt = %Y-%m-%d  %%{F#55}%%{F#ff} %H:%M
+interval = 30
+
+[module/volume]
+type = internal/volume
+
+format-volume = <label-volume> <bar-volume>
+
+label-volume = VOL
+label-volume-foreground = ${root.foreground}
+
+label-muted = sound muted
+label-muted-foreground = ${root.foreground}
+
+bar-volume-width = 10
+bar-volume-foreground-0 = ${xrdb:color1}
+bar-volume-foreground-1 = ${xrdb:color1}
+bar-volume-foreground-2 = ${xrdb:color1}
+bar-volume-foreground-3 = ${xrdb:color1}
+bar-volume-foreground-4 = ${xrdb:color1}
+bar-volume-foreground-5 = ${xrdb:color1}
+bar-volume-foreground-6 = ${xrdb:color1}
+bar-volume-gradient = false
+bar-volume-indicator = │
+bar-volume-indicator-font = 0
+bar-volume-fill = ─
+bar-volume-fill-font = 0
+bar-volume-empty = ─
+bar-volume-empty-font = 0
+
+[module/battery]
+type = internal/battery
+battery = BAT1
+adapter = ACAD
+full-at = 98
+
+label-discharging-foreground = ${xrdb:color1}
+
+[module/temperature]
+type = internal/temperature
+thermal-zone = 1
+warn-temperature = 80
+
+format = <label>
+;format-underline = #f50a4d
+format-warn = <label-warn>
+;format-warn-underline = ${self.format-underline}
+
+label = %temperature%
+label-warn = %temperature%
+label-warn-foreground = ${xrdb:color1}
+
+ramp-0 = .
+ramp-1 = :
+ramp-2 = |
+
+interval = 5
+;ramp-foreground = #55
+
+[module/menu]
+type = custom/menu
+
+label-open = apps
+label-close = cancel
+label-close-foreground = ${xrdb:color6}
+label-separator = |
+
+menu-0-0 = www
+menu-0-0-exec = vivaldi-stable &
+menu-0-1 = mail
+menu-0-1-exec = thunderbird &
+menu-0-2 = files
+menu-0-2-exec = pcmanfm &
+menu-0-3 = games
+menu-0-3-exec = steam-native &
+menu-0-4 = write
+menu-0-4-exec = libreoffice &
+menu-0-5 = develop
+menu-0-5-exec = intellj-idea-ultimate-edition &
+
+[module/powermenu]
+type = custom/menu
+
+label-open =  power
+label-open-foreground = ${xrdb:color6}
+label-close =  cancel
+label-close-foreground = ${xrdb:color6}
+label-separator = |
+label-separator-foreground = #55
+
+menu-0-0 = reboot
+menu-0-0-exec = menu-open-1
+menu-0-1 = power off
+menu-0-1-exec = menu-open-2
+
+menu-1-0 = cancel
+menu-1-0-exec = menu-open-0
+menu-1-1 = reboot
+menu-1-1-exec = sudo reboot
+
+menu-2-0 = power off
+menu-2-0-exec = sudo poweroff
+menu-2-1 = cancel
+menu-2-1-exec = menu-open-0
+
+[module/battery_status]
+type = custom/script
+exec = get_battery_charge.sh
+
+; vim:ft=dosini

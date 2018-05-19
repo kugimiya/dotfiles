@@ -3,6 +3,30 @@ font pango:Iosevka 9
 
 floating_modifier $mod
 
+exec "compton -b"
+exec "~kugi/./.fehbg"
+exec "xrdb -merge .Xdefaults"
+exec "launch_polybar"
+
+bindsym $mod+o exec "launch_polybar"
+
+# colors of borders
+set $focused #80878a
+set $focused_inactive #5f676a
+set $unfocused #333333
+set $urgent #900000
+set $placeholder #0c0c0c
+set $background #ffffff
+
+# class                 border            backgr.           text    indicator child_border
+client.focused          $focused          $focused          #ffffff #2e9ef4   $focused
+client.focused_inactive $focused_inactive $focused_inactive #ffffff #484e50   $focused_inactive
+client.unfocused        $unfocused        $unfocused        #888888 #292d2e   $unfocused
+client.urgent           $urgent           $urgent           #ffffff #900000   $urgent
+client.placeholder      $placeholder      $placeholder      #ffffff #000000   $placeholder
+
+client.background       $background
+
 # sets tabbed layout for fullscreen-oriented windows
 for_window [class = "Chromium"] layout tabbed
 for_window [class = "Code"] layout tabbed
