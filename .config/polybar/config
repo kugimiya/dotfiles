@@ -48,8 +48,9 @@ interval = 60
 
 mount-0 = /
 mount-1 = /home
+mount-2 = /mnt/1
 
-label-mounted = %mountpoint%: %percentage_used%% [used]
+label-mounted = %mountpoint%: %percentage_used%%
 
 label-unmounted = %mountpoint%: not mounted
 label-unmounted-foreground = #55

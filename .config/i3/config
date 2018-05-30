@@ -18,6 +18,10 @@ set $urgent #900000
 set $placeholder #0c0c0c
 set $background #ffffff
 
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer sset 'Master' 1%+ #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer sset 'Master' 1%- #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id amixer sset 'Master' toggle # mute sound
+
 # class                 border            backgr.           text    indicator child_border
 client.focused          $focused          $focused          #ffffff #2e9ef4   $focused
 client.focused_inactive $focused_inactive $focused_inactive #ffffff #484e50   $focused_inactive
@@ -54,6 +58,7 @@ bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
+bindsym $mod+Tab focus right
 
 # move focused window
 bindsym $mod+Shift+j move left
