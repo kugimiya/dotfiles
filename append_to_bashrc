@@ -1,5 +1,0 @@
-# just put in your .bashrc this:
-#   . ~/.custom_bashrc
-
-PATH="$HOME/bin:$HOME/.local/bin:$PATH"
-
